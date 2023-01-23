@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.wrapper {
+  max-width: 1054px;
+  margin: 0 auto;
+  padding: 50px 15px;
+}
+
+.form {
+  max-width: 400px;
+  margin: 0 auto 30px;
+}
+
+.search-field {
+  display: block;
+  width: 100%;
+  padding: 10px 7px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #4e4e4e;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 0 0 50px 4px rgba(0, 0, 0, 0.1);
+  padding: 7px;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  max-width: 50px;
+  flex: 0 0 50px;
+  margin: 5px 10px;
+}
+
+.avatar img {
+  width: 100%;
+}
+
+.description {
+  font-size: 12px;
+}
+
+.lang {
+  font-size: 10px;
+}
+
+.item-heading {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.item-heading a {
+  color: #a9a9a9;
+}
+
+.grid {
+  display: flex;
+}
+
+.col {
+  width: calc(50% - 30px);
+  flex: 0 0 calc(50% - 30px);
+  margin: 20px 15px;
+}
+
+.results-list {
+  margin: 0;
+  padding-inline-start: 0;
+}
+
+.inner-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.button {
+  background-color: #fff;
+  border: 2px solid #000;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 5px;
+  flex: 0 0 100px;
+}
