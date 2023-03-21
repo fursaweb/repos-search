@@ -1,51 +1,26 @@
-import React, { useEffect, useState } from "react";
-
+import React from "react";
+import { useAppSelector } from "./hooks";
 import SearchField from "./Components/SearchField";
 import ResultsList from "./Components/ResultsList";
 import FavoriteList from "./Components/FavoriteList";
-import { IListItem } from "./Components/ListItem";
 
 import "./App.css";
 
 function App() {
-  const [repositoryList, setRepositoryList] = useState<IListItem[]>([]);
-  const [favoriteList, setFavoriteList] = useState<IListItem[]>([]);
-  const setResults = (list: IListItem[]) => {
-    setRepositoryList(list);
-  };
-
-  const addToFavorite = (itemId: number) => {
-    const item = repositoryList.filter((repo: IListItem) => repo.id === itemId);
-    item[0].isFavorite = true;
-    const list = [...favoriteList, ...item];
-    setFavoriteList(list);
-    localStorage.setItem("favoriteList", JSON.stringify(list));
-  };
-
-  const loadFavorites = () => {
-    const serializedState = localStorage.getItem("favoriteList");
-    if (serializedState === null) {
-      return undefined;
-    } else {
-      setFavoriteList(JSON.parse(serializedState));
-    }
-  };
-
-  useEffect(() => {
-    loadFavorites();
-  }, []);
+  const { repos, isLoading, error, favoriteRepos } = useAppSelector(
+    (state) => state.repos
+  );
 
   return (
     <div className="wrapper">
-      <SearchField setResults={setResults} />
+      <SearchField />
       <div className="grid">
         <div className="col">
-          {repositoryList.length > 0 && (
-            <ResultsList list={repositoryList} addToFavorite={addToFavorite} />
-          )}
+          {error && <h3>{error}</h3>}
+          {isLoading ? <h3>Loading...</h3> : <ResultsList list={repos} />}
         </div>
         <div className="col">
-          {favoriteList.length > 0 && <FavoriteList list={favoriteList} />}
+          {favoriteRepos.length > 0 && <FavoriteList list={favoriteRepos} />}
         </div>
       </div>
     </div>
